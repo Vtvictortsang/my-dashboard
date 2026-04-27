@@ -18,25 +18,26 @@
         .animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 自定義 Google 按鈕樣式，確保在任何環境都能顯示 */
+        /* 自定義 Google 按鈕樣式 */
         .custom-google-btn {
             display: flex;
             align-items: center;
-            padding: 0 12px;
+            padding: 0 16px;
             height: 40px;
             background-color: #ffffff;
             border: 1px solid #dadce0;
-            border-radius: 20px;
+            border-radius: 8px;
             color: #3c4043;
             font-family: 'Google Sans', arial, sans-serif;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
         }
         .custom-google-btn:hover {
             background-color: #f8f9fa;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,.30), 0 1px 3px 1px rgba(60,64,67,.15);
+            border-color: #d2d4d7;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.30);
         }
     </style>
 </head>
@@ -52,14 +53,13 @@
             </button>
             
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-sm">L</div>
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold shadow-sm">L</div>
                 <h1 class="text-lg font-bold tracking-tight text-gray-800">控制台管理系統</h1>
             </div>
         </div>
         
         <!-- 右側狀態區 -->
         <div class="flex items-center gap-4">
-            <!-- 登入前顯示：改用手寫 SVG 確保圖示顯示 -->
             <div id="login-section">
                 <div id="g_id_onload"
                      data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com" 
@@ -69,7 +69,6 @@
                      data-auto_prompt="false">
                 </div>
                 
-                <!-- 手動建立的 Google 登入按鈕 -->
                 <button class="custom-google-btn" onclick="triggerGoogleLogin()">
                     <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -77,18 +76,17 @@
                         <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
                         <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                     </svg>
-                    使用 Google 帳戶登入
+                    Google 登入
                 </button>
             </div>
 
-            <!-- 登入後顯示 -->
             <div id="user-header-profile" class="hidden flex items-center gap-3 pl-4 border-l border-gray-200 animate-fade-in">
                 <div class="text-right hidden sm:block">
                     <p id="header-user-name" class="text-sm font-bold text-gray-900 leading-none"></p>
                     <p id="header-user-email" class="text-[10px] text-gray-500 mt-1"></p>
                 </div>
-                <img id="header-user-img" src="" class="w-9 h-9 rounded-full border-2 border-white shadow-sm object-cover">
-                <button onclick="location.reload()" class="p-1.5 hover:bg-red-50 text-red-400 rounded-lg transition-colors" title="登出系統">
+                <img id="header-user-img" src="" class="w-9 h-9 rounded-full border border-gray-200 shadow-sm object-cover">
+                <button onclick="location.reload()" class="p-1.5 hover:bg-red-50 text-red-400 rounded-lg transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
@@ -102,14 +100,14 @@
         <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:relative lg:translate-x-0 lg:flex w-64 flex-col bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out z-40">
             <div class="p-4 flex-1 overflow-y-auto">
                 <div class="space-y-1">
-                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">主選單</p>
-                    <button onclick="showTab('overview')" class="w-full flex items-center gap-3 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium nav-link" id="nav-overview">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">主功能列表</p>
+                    <button onclick="showTab('overview')" class="w-full flex items-center gap-3 px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg font-medium nav-link" id="nav-overview">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                         </svg>
-                        總覽
+                        系統總覽
                     </button>
-                    <button onclick="showTab('employer-detail')" class="w-full flex items-center gap-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg nav-link" id="nav-employer-detail">
+                    <button onclick="showTab('employer-detail')" class="w-full flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg nav-link" id="nav-employer-detail">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
@@ -118,29 +116,154 @@
                 </div>
             </div>
             
-            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+            <div class="p-4 border-t border-gray-100 bg-gray-50/80">
                 <div class="flex items-center gap-3">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="text-xs font-medium text-gray-600">系統即時監控中</span>
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-tighter">系統運行正常</span>
                 </div>
             </div>
         </aside>
 
         <!-- 主要內容 -->
-        <main class="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
-            <div id="tab-overview" class="tab-content active">
-                <div id="welcome-message" class="bg-white border border-gray-200 p-10 rounded-2xl text-center mb-8 shadow-sm transition-all">
-                    <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">👋</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">歡迎使用管理系統</h3>
-                    <p class="text-gray-500">請透過右上角的 Google 按鈕登入以存取您的個人資料。</p>
+        <main class="flex-1 overflow-y-auto p-4 md:p-8 bg-[#F9FAFB]">
+            
+            <!-- 總覽分頁 -->
+            <div id="tab-overview" class="tab-content active animate-fade-in">
+                <div id="welcome-message" class="bg-white border border-gray-200 p-8 rounded-2xl text-center mb-8 shadow-sm">
+                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">👋</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">歡迎來到控制台</h3>
+                    <p class="text-gray-500 text-sm">請先登入帳戶以開啟完整管理功能。</p>
                 </div>
-                <!-- 指標卡片省略，結構同前... -->
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            </div>
+                            <span class="text-xs font-bold text-green-500">+12.5%</span>
+                        </div>
+                        <p class="text-gray-500 text-xs font-medium uppercase">本月總體營收</p>
+                        <h4 class="text-2xl font-black mt-1">$42,880</h4>
+                    </div>
+                    <!-- 更多指標卡片... -->
+                </div>
             </div>
 
-            <!-- 詳細規格分頁省略，結構同前... -->
-            <div id="tab-employer-detail" class="tab-content">
-                <!-- ... -->
+            <!-- 詳細規格分頁 (根據上傳截圖風格優化) -->
+            <div id="tab-employer-detail" class="tab-content animate-fade-in">
+                <div class="mb-6 flex justify-between items-end">
+                    <div>
+                        <nav class="flex text-xs text-gray-400 gap-2 mb-1">
+                            <span>主選單</span> <span>/</span> <span class="text-indigo-600 font-medium">詳細規格</span>
+                        </nav>
+                        <h2 class="text-2xl font-extrabold text-gray-900">企業合作詳細規格</h2>
+                    </div>
+                    <button class="px-4 py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all">
+                        匯出報表
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- 左側：企業主卡片 -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                            <div class="h-2 bg-indigo-600 w-full"></div>
+                            <div class="p-6 md:p-8">
+                                <div class="flex items-center gap-6 mb-8 border-b border-gray-50 pb-8">
+                                    <div class="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center border border-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-1">
+                                            <h3 class="text-xl font-black text-gray-900">未來科技集團 (Future Tech Group)</h3>
+                                            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-black rounded uppercase">VIP</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm">企業統一編號：88776655</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                                    <div class="space-y-4">
+                                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[2px]">基本資訊資料庫</h4>
+                                        <div class="space-y-3">
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">產業領域</span>
+                                                <span class="text-sm font-bold">人工智能與自動化</span>
+                                            </div>
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">企業規模</span>
+                                                <span class="text-sm font-bold">500 - 1000 人</span>
+                                            </div>
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">成立年份</span>
+                                                <span class="text-sm font-bold">2018</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[2px]">聯絡與通路</h4>
+                                        <div class="space-y-3">
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">官方網站</span>
+                                                <span class="text-sm text-indigo-600 font-bold underline cursor-pointer italic">futuretech.io</span>
+                                            </div>
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">主要窗口</span>
+                                                <span class="text-sm font-bold">王大明 (營運經理)</span>
+                                            </div>
+                                            <div class="flex justify-between border-b border-gray-50 pb-2">
+                                                <span class="text-sm text-gray-500">聯繫電話</span>
+                                                <span class="text-sm font-bold">02-2345-6789</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 歷史紀錄或次要資訊 -->
+                        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+                            <h4 class="text-xs font-bold text-gray-800 mb-4">合約狀態說明</h4>
+                            <div class="p-4 bg-gray-50 rounded-xl text-sm text-gray-600 leading-relaxed italic border-l-4 border-indigo-500">
+                                目前與該集團之合作協定有效期至 2025 年 12 月。包含所有 AI 模組之商業授權及技術支援優先權。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右側：側邊資訊欄 -->
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                            <h4 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-4">系統狀態標籤</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                                    <span class="text-xs font-bold text-emerald-700">合作狀態</span>
+                                    <span class="px-2 py-1 bg-emerald-500 text-white text-[10px] font-black rounded-full uppercase">Active</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-xl border border-blue-100">
+                                    <span class="text-xs font-bold text-blue-700">服務等級</span>
+                                    <span class="text-xs font-black text-blue-800">Platinum</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-900 p-6 rounded-2xl text-white shadow-xl shadow-indigo-100 relative overflow-hidden">
+                            <div class="relative z-10">
+                                <h4 class="text-xs font-bold opacity-60 mb-2">快速操作區</h4>
+                                <p class="text-lg font-bold mb-4">需要變更規格資訊嗎？</p>
+                                <button class="w-full py-2.5 bg-white text-indigo-900 text-sm font-black rounded-xl hover:bg-gray-100 transition-colors">
+                                    進入編輯模式
+                                </button>
+                            </div>
+                            <!-- 裝飾用圓形 -->
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-500 rounded-full opacity-20"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </main>
     </div>
 
@@ -154,12 +277,12 @@
             if (targetTab) targetTab.classList.add('active');
             
             document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('bg-blue-50', 'text-blue-700', 'font-medium');
+                link.classList.remove('bg-indigo-50', 'text-indigo-700', 'font-medium');
                 link.classList.add('text-gray-600');
             });
             const activeLink = document.getElementById('nav-' + tabName);
             if (activeLink) {
-                activeLink.classList.add('bg-blue-50', 'text-blue-700', 'font-medium');
+                activeLink.classList.add('bg-indigo-50', 'text-indigo-700', 'font-medium');
                 activeLink.classList.remove('text-gray-600');
             }
             if (window.innerWidth < 1024) toggleSidebar();
@@ -173,11 +296,9 @@
         // 處理 Google 登入回傳
         function handleCredentialResponse(response) {
             const data = parseJwt(response.credential);
-            
             document.getElementById('login-section').classList.add('hidden');
             const profileArea = document.getElementById('user-header-profile');
             profileArea.classList.remove('hidden');
-            
             document.getElementById('header-user-img').src = data.picture;
             document.getElementById('header-user-name').innerText = data.name;
             document.getElementById('header-user-email').innerText = data.email;
@@ -185,12 +306,9 @@
             const welcomeMsg = document.getElementById('welcome-message');
             welcomeMsg.innerHTML = `
                 <div class="flex flex-col items-center animate-fade-in">
-                    <div class="relative mb-6">
-                        <img src="${data.picture}" class="w-24 h-24 rounded-full border-4 border-white shadow-xl">
-                        <div class="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-1">歡迎回來，${data.name}</h3>
-                    <p class="text-blue-600 font-medium text-sm mb-4">${data.email}</p>
+                    <img src="${data.picture}" class="w-20 h-20 rounded-full border-4 border-white shadow-lg mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">歡迎回來，${data.name}</h3>
+                    <p class="text-indigo-600 text-sm font-medium">${data.email}</p>
                 </div>
             `;
         }
@@ -204,7 +322,6 @@
             return JSON.parse(jsonPayload);
         }
 
-        // 側邊欄控制
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
